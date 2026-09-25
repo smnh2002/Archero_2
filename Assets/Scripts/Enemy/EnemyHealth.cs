@@ -62,7 +62,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable, IPoolable
     }
 
     // YENÝ: SpawnDirector tarafýndan her spawn'da çaðrýlacak, base deðerden hesaplar (compounding olmaz)
-    public void ConfigureForSpawn(float healthMultiplier, bool isElite, float eliteHealthBonus, float eliteScaleMultiplier)
+    public void ConfigureForSpawn(float healthMultiplier, bool isElite, float eliteHealthBonus, float eliteScaleMultiplier, int newGoldReward)
     {
         float finalMultiplier = isElite ? healthMultiplier * eliteHealthBonus : healthMultiplier;
 
@@ -71,6 +71,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable, IPoolable
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
         transform.localScale = isElite ? baseScale * eliteScaleMultiplier : baseScale;
+
+        goldReward = newGoldReward;
     }
 
     public void TakeDamage(DamageData damage)

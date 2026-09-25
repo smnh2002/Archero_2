@@ -86,7 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCombat
   attackPoint: {fileID: 42527396350669894}
   attackRange: 5
-  attackDamage: 10
+  attackDamage: 5
   knockbackForce: 3
   playerLayer:
     serializedVersion: 2

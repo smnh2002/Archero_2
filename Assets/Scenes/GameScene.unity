@@ -11621,9 +11621,12 @@ MonoBehaviour:
   bossEntranceDelay: 6
   cameraShakeDuration: 5
   cameraShakeMagnitude: 10
-  runDurationSeconds: 30
+  baseEnemyGoldReward: 2
+  bossGoldReward: 50
+  runDurationSeconds: 120
   initialSpawnInterval: 3.5
   finalSpawnInterval: 1.5
+  mapDamageMultiplier: 0.6
   initialHealthMultiplier: 1
   finalHealthMultiplier: 2.2
   initialEliteChance: 0.05
@@ -11631,7 +11634,7 @@ MonoBehaviour:
   eliteHealthBonus: 1.8
   eliteScaleMultiplier: 1.3
   eliteDamageBonus: 1.5
-  maxConcurrentEnemies: 7
+  maxConcurrentEnemies: 2
   bossSpawnDistanceFromPlayer: 4
   obstacleClearanceRadius: 1
   minPlayerDistance: 6

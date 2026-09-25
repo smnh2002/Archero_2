@@ -68,12 +68,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossCombat
   attackPointRight: {fileID: 2271999521977406890}
   normalAttackRange: 5
-  normalAttackDamage: 35
+  normalAttackDamage: 20
   normalKnockback: 10
   normalAttackCooldown: 2.5
   attackPointLeft: {fileID: 5728475845188449840}
   specialAttackRange: 3
-  specialAttackDamage: 35
+  specialAttackDamage: 25
   specialKnockback: 20
   specialAttackCooldown: 6
   specialAttackChance: 0.5
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1cc6940b8fe83439c952fc0a29f5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossHealth
-  maxHealth: 500
+  maxHealth: 400
   phase2Threshold: 0.5
   renderersToFlash:
   - {fileID: 1989706232270743383}

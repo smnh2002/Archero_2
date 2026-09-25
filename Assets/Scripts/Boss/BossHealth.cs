@@ -9,6 +9,9 @@ public class BossHealth : MonoBehaviour, IDamageable
     [SerializeField] private float maxHealth = 500f;
     [SerializeField] private float phase2Threshold = 0.5f;
 
+    [Header("Odul Ayarlari")]
+    [SerializeField] private int goldReward = 50;
+
     [Header("Gorsel Feedback")]
     [SerializeField] private Renderer[] renderersToFlash;
     [SerializeField] private Material flashMaterial;
@@ -32,6 +35,7 @@ public class BossHealth : MonoBehaviour, IDamageable
 
     public float CurrentHealth => currentHealth;
     public float MaxHealth => maxHealth;
+    public void SetGoldReward(int amount) { goldReward = amount; }
     public bool IsDead => isDead;
     public bool IsPhase2 => isPhase2;
 
@@ -118,6 +122,8 @@ public class BossHealth : MonoBehaviour, IDamageable
         isDead = true;
         OnDeath?.Invoke();
 
+        CurrencyManager.Instance?.AddGold(goldReward);
+
         if (animator != null) animator.SetTrigger("Die");
         if (bossAI != null) bossAI.enabled = false;
         if (agent != null) agent.enabled = false;
@@ -131,4 +137,5 @@ public class BossHealth : MonoBehaviour, IDamageable
         Destroy(gameObject, 5f);
     }
 }
+
 

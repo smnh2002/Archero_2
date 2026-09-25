@@ -19,6 +19,10 @@ public class SpawnDirector : MonoBehaviour
     [SerializeField] private float cameraShakeDuration = 0.6f;
     [SerializeField] private float cameraShakeMagnitude = 0.3f;
 
+    [Header("Odul (Ekonomi) Ayarlari")]
+    public int baseEnemyGoldReward = 2;
+    public int bossGoldReward = 50;
+
     [Header("Run Suresi")]
     public float runDurationSeconds = 150f;
 
@@ -26,7 +30,9 @@ public class SpawnDirector : MonoBehaviour
     public float initialSpawnInterval = 3f;
     public float finalSpawnInterval = 0.8f;
 
-    [Header("Zorluk Egrisi (can carpani)")]
+    [Header("Zorluk Ayarlari (Can & Hasar)")]
+    public float mapDamageMultiplier = 1f;
+
     public float initialHealthMultiplier = 1f;
     public float finalHealthMultiplier = 2.5f;
 
@@ -111,14 +117,14 @@ public class SpawnDirector : MonoBehaviour
         EnemyHealth health = instance.GetComponent<EnemyHealth>();
         if (health != null)
         {
-            health.ConfigureForSpawn(healthMultiplier, isElite, eliteHealthBonus, eliteScaleMultiplier);
+            health.ConfigureForSpawn(healthMultiplier, isElite, eliteHealthBonus, eliteScaleMultiplier, baseEnemyGoldReward);
             health.OnDeath += () => activeEnemies.Remove(instance);
         }
 
         EnemyCombat combat = instance.GetComponent<EnemyCombat>();
         if (combat != null)
         {
-            combat.ConfigureForSpawn(isElite, eliteDamageBonus);
+            combat.ConfigureForSpawn(isElite, eliteDamageBonus, mapDamageMultiplier);
         }
 
         if (isElite)
@@ -209,6 +215,7 @@ public class SpawnDirector : MonoBehaviour
         yield return new WaitForSeconds(bossEntranceDelay);
 
         GameObject boss = Instantiate(bossPrefab, point, Quaternion.identity);
+        boss.GetComponent<BossHealth>()?.SetGoldReward(bossGoldReward);
         StartCoroutine(BossRiseAnimation(boss.transform));
 
         Debug.Log("<color=red>BOSS SPAWN OLDU!</color>");
@@ -365,5 +372,7 @@ public class SpawnDirector : MonoBehaviour
         Gizmos.DrawWireCube(center, size);
     }
 }
+
+
 
 

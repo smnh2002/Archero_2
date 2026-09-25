@@ -62,9 +62,10 @@ public class EnemyCombat : MonoBehaviour
     }
 
     // YENÝ: SpawnDirector tarafýndan çaðrýlacak
-    public void ConfigureForSpawn(bool isElite, float eliteDamageBonus)
+    public void ConfigureForSpawn(bool isElite, float eliteDamageBonus, float mapDamageMultiplier)
     {
-        attackDamage = isElite ? baseAttackDamage * eliteDamageBonus : baseAttackDamage;
+        float dmg = baseAttackDamage * mapDamageMultiplier;
+        attackDamage = isElite ? dmg * eliteDamageBonus : dmg;
     }
 
     private void Attack()

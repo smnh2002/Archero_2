@@ -220,6 +220,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     /// PlayerStats'tan MaxHealth degerini ceker, currentHealth'i tam doldurur
     /// ve UI'ya OnHealthChanged event'i gonderir.
     /// </summary>
+    public void AddMaxHealth(float amount)
+    {
+        maxHealth += amount;
+        currentHealth += amount;
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
     public void SyncMaxHealthFromStats()
     {
         if (PlayerStats.Instance == null) return;

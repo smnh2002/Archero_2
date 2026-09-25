@@ -9074,9 +9074,12 @@ MonoBehaviour:
   bossEntranceDelay: 1.5
   cameraShakeDuration: 5
   cameraShakeMagnitude: 10
-  runDurationSeconds: 20
+  baseEnemyGoldReward: 5
+  bossGoldReward: 200
+  runDurationSeconds: 240
   initialSpawnInterval: 3
   finalSpawnInterval: 0.8
+  mapDamageMultiplier: 2.2
   initialHealthMultiplier: 1.3
   finalHealthMultiplier: 2.6
   initialEliteChance: 0.05
