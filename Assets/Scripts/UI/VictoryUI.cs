@@ -1,11 +1,9 @@
-using UnityEngine;
-using UnityEngine.SceneManagement; // YENÝ: Sahne geçiþi için bu kütüphaneyi ekledik
+ï»¿using UnityEngine;
+using UnityEngine.SceneManagement; 
 
 public class VictoryUI : MonoBehaviour
 {
     [SerializeField] private GameObject victoryPanel;
-
-    // YENÝ: Inspector'dan da deðiþtirebilmen için sahne adýný buraya ekledik
     [SerializeField] private string nextSceneName = "NewMapScene";
 
     private void Start()
@@ -21,15 +19,13 @@ public class VictoryUI : MonoBehaviour
     private void HandleStateChanged(GameState oldState, GameState newState)
     {
         if (victoryPanel != null)
-            victoryPanel.SetActive(newState == GameState.Victory); if (newState == GameState.Victory) { if (PlayerPrefs.GetInt("MaxUnlockedLevel", 1) < 2) { PlayerPrefs.SetInt("MaxUnlockedLevel", 2); PlayerPrefs.Save(); } }
+            victoryPanel.SetActive(newState == GameState.Victory); 
     }
 
     public void OnContinueButtonPressed()
     {
-        // GameManager'ýn hafýzasýndaki eski ismi kullanmak yerine direkt kendi ismimizi yüklüyoruz:
         SceneManager.LoadScene(nextSceneName);
 
-        // Sahne yüklendiðinde oyunun donuk kalmamasý (zamanýn akmasý) için state'i güncelliyoruz:
         if (GameManager.Instance != null)
         {
             GameManager.Instance.SetState(GameState.Playing);

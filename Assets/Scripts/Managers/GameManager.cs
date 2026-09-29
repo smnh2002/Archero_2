@@ -1,7 +1,7 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum GameState  // YENÝ - eksik olan buydu
+public enum GameState
 {
     MainMenu,
     Playing,
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     public event System.Action<GameState, GameState> OnStateChanged;
 
-    [Header("Sahne Geçiþi")]
+    [Header("Sahne Gecisi")]
     [SerializeField] private string nextSceneName = "";
 
     private void Awake()
@@ -33,8 +33,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-   
-
     public void SetState(GameState newState)
     {
         if (CurrentState == newState) return;
@@ -42,7 +40,7 @@ public class GameManager : MonoBehaviour
         GameState oldState = CurrentState;
         CurrentState = newState;
 
-        Debug.Log($"<color=cyan>Game State Deðiþti:</color> {oldState} -> {newState}");
+        Debug.Log($"<color=cyan>Game State Degisti:</color> {oldState} -> {newState}");
 
         HandleTimeScale(newState);
         OnStateChanged?.Invoke(oldState, newState);
@@ -65,14 +63,39 @@ public class GameManager : MonoBehaviour
     public void PauseGame() { if (CurrentState == GameState.Playing) SetState(GameState.Paused); }
     public void ResumeGame() { if (CurrentState == GameState.Paused) SetState(GameState.Playing); }
     public void TriggerLevelUp() => SetState(GameState.LevelUp);
-    public void TriggerVictory() => SetState(GameState.Victory);
+    
+    public void TriggerVictory()
+    {
+        SetState(GameState.Victory);
+        UnlockNextLevel();
+    }
+
+    private void UnlockNextLevel()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        int currentLevelIndex = 1;
+
+        if (currentScene == "GameScene") currentLevelIndex = 1;
+        else if (currentScene == "NewMapScene") currentLevelIndex = 2;
+        else if (currentScene == "NewMap2Scene") currentLevelIndex = 3;
+        else if (currentScene == "NewMap3Scene") currentLevelIndex = 4;
+
+        int maxUnlocked = PlayerPrefs.GetInt("MaxUnlockedLevel", 1);
+        if (maxUnlocked <= currentLevelIndex)
+        {
+            PlayerPrefs.SetInt("MaxUnlockedLevel", currentLevelIndex + 1);
+            PlayerPrefs.Save();
+            Debug.Log($"<color=green>Level {currentLevelIndex + 1} unlocked!</color>");
+        }
+    }
+
     public void TriggerDefeat() => SetState(GameState.Defeat);
 
     public void LoadNextScene()
     {
         if (string.IsNullOrEmpty(nextSceneName))
         {
-            Debug.LogWarning("GameManager: Next Scene Name atanmamýþ! Inspector'dan doldur.");
+            Debug.LogWarning("GameManager: Next Scene Name atanmadi! Inspector'dan doldur.");
             return;
         }
 
@@ -80,17 +103,15 @@ public class GameManager : MonoBehaviour
         SetState(GameState.Playing);
     }
 
-    // Bu yeni metod, içine yazacaðýmýz sahne adýný direkt yükleyecek
     public void LoadSceneByName(string targetSceneName)
     {
         if (string.IsNullOrEmpty(targetSceneName))
         {
-            Debug.LogWarning("Sahne adý boþ olamaz!");
+            Debug.LogWarning("Sahne adi bos olamaz!");
             return;
         }
 
         SceneManager.LoadScene(targetSceneName);
-        SetState(GameState.Playing); // Zamanýn (Time.timeScale) tekrar 1 olmasýný garantiye alýyoruz
+        SetState(GameState.Playing);
     }
-
 }

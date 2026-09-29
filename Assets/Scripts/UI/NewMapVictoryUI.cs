@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class NewMapVictoryUI : MonoBehaviour
@@ -33,8 +33,7 @@ public class NewMapVictoryUI : MonoBehaviour
 
         if (newState == GameState.Victory)
         {
-            victoryPanel.SetActive(true); if (PlayerPrefs.GetInt("MaxUnlockedLevel", 1) < 3) { PlayerPrefs.SetInt("MaxUnlockedLevel", 3); PlayerPrefs.Save(); }
-            victoryPanel.SetActive(true); if (PlayerPrefs.GetInt("MaxUnlockedLevel", 1) < 4) { PlayerPrefs.SetInt("MaxUnlockedLevel", 4); PlayerPrefs.Save(); }
+            victoryPanel.SetActive(true); 
         }
         else
         {
