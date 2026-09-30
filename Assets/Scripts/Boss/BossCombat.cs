@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class BossCombat : MonoBehaviour
 {
@@ -29,6 +29,7 @@ public class BossCombat : MonoBehaviour
     private float nextNormalAttackTime = 0f;
     private float nextSpecialAttackTime = 0f;
     private bool isAttacking = false;
+    private float attackStartTime = 0f; // SAFETY TIMEOUT
     public bool IsAttacking => isAttacking;
 
     private void Start()
@@ -43,6 +44,12 @@ public class BossCombat : MonoBehaviour
 
     private void Update()
     {
+        // SAFETY TIMEOUT: Eger boss bir sekilde animasyonda takili kalirsa saldiriyi iptal et (3 saniye timeout)
+        if (isAttacking && Time.time - attackStartTime > 3f)
+        {
+            isAttacking = false;
+        }
+
         if (player == null || isAttacking) return;
         if (bossHealth != null && bossHealth.IsDead) return;
 
@@ -65,6 +72,7 @@ public class BossCombat : MonoBehaviour
         if (useSpecial)
         {
             isAttacking = true;
+            attackStartTime = Time.time;
             anim.ResetTrigger("AttackNormal");
             anim.SetTrigger("AttackSpecial");
             nextSpecialAttackTime = Time.time + specialAttackCooldown;
@@ -72,6 +80,7 @@ public class BossCombat : MonoBehaviour
         else
         {
             isAttacking = true;
+            attackStartTime = Time.time;
             anim.ResetTrigger("AttackSpecial");
             anim.SetTrigger("AttackNormal");
             nextNormalAttackTime = Time.time + normalAttackCooldown;
@@ -85,6 +94,12 @@ public class BossCombat : MonoBehaviour
     public void ForceResetAttacking()
     {
         isAttacking = false;
+        // Boss vurulduğunda girdiği "Hit" animasyonu sırasında, BossCombat'ın hemen yeni bir 
+        // saldırı tetikleyip animasyonu (ve isAttacking değişkenini) bozmasını engellemek için 
+        // kısa bir süreliğine saldırıları duraklatıyoruz.
+        float hitStunDuration = 0.6f;
+        nextNormalAttackTime = Mathf.Max(nextNormalAttackTime, Time.time + hitStunDuration);
+        nextSpecialAttackTime = Mathf.Max(nextSpecialAttackTime, Time.time + hitStunDuration);
     }
 
     // Animation Event - Attack01 klibinin vurus anina ekle

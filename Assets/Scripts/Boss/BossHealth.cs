@@ -85,7 +85,7 @@ public class BossHealth : MonoBehaviour, IDamageable
                 }
         
         // Sadece boss saldirmiyorsa (hareket veya idle halindeyse) ve ust uste stun-lock olmamasi icin 1 saniyede bir Hit animasyonu oynatilir.
-        if (animator != null) { if (bossCombat == null || !bossCombat.IsAttacking) { if (Time.time - lastHitAnimTime >= 1.5f) { animator.SetTrigger("Hit"); lastHitAnimTime = Time.time; if (bossCombat != null) bossCombat.ForceResetAttacking(); } } }
+        if (animator != null) { if (bossCombat == null || !bossCombat.IsAttacking) { if (Time.time - lastHitAnimTime >= 1.5f) { animator.ResetTrigger("Hit"); animator.SetTrigger("Hit"); lastHitAnimTime = Time.time; if (bossCombat != null) bossCombat.ForceResetAttacking(); } } }
 
         StartCoroutine(DamageFlashRoutine());
     }
