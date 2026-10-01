@@ -32,11 +32,7 @@ public class DebugCoinCheat : MonoBehaviour
         _instance = this;
     }
 
-    private void Update()
-    {
-        if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
-            GiveCoins();
-    }
+    
 
     private void GiveCoins()
     {

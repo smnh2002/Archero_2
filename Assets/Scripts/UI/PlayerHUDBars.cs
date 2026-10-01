@@ -198,8 +198,8 @@ public class PlayerHUDBars : MonoBehaviour
         tmp.text = defText;
         tmp.fontSize = 36;
         tmp.color = Color.white;
-        // GameScene'deki orijinal hizalama merkezi baz alinarak ayarlandi
-        tmp.horizontalAlignment = HorizontalAlignmentOptions.Center;
+        // GameScene'deki orijinal hizalama (Left) baz alinarak ayarlandi
+        tmp.horizontalAlignment = HorizontalAlignmentOptions.Left;
         tmp.verticalAlignment = VerticalAlignmentOptions.Middle;
 
         var rt = go.GetComponent<RectTransform>();
