@@ -209,7 +209,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 20
   m_fontSizeMax: 50
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -563,7 +563,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 20
   m_fontSizeMax: 50
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -763,6 +763,14 @@ PrefabInstance:
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: 941e6ff8b4e7cd746afc0a466a1adfd5, type: 2}
+    - target: {fileID: 2619138429302667585, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3459130744759973169, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3664856428652978329, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -843,9 +851,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5914857384278682493, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6570009431367270541, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
       propertyPath: m_Name
       value: CardUpgradeElementSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903461844375649649, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9112563177996196944, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1624,7 +1640,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 20
   m_fontSizeMax: 50
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2436,6 +2452,14 @@ PrefabInstance:
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: 744db3ec5210dcc4bb560d3bb8cca90c, type: 2}
+    - target: {fileID: 2619138429302667585, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3459130744759973169, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3664856428652978329, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2516,6 +2540,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5914857384278682493, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6570009431367270541, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
       propertyPath: m_Name
       value: CardUpgradeElementHealth
@@ -2531,6 +2559,18 @@ PrefabInstance:
     - target: {fileID: 8784222434769397245, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
       propertyPath: m_Color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903461844375649649, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112563177996196944, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 234.8961
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112563177996196944, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -170.552
       objectReference: {fileID: 0}
     - target: {fileID: 9154694684882076251, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
       propertyPath: m_Sprite
@@ -2833,7 +2873,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 20
   m_fontSizeMax: 50
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -4788,6 +4828,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -40
       objectReference: {fileID: 0}
+    - target: {fileID: 2619138429302667585, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3459130744759973169, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3664856428652978329, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4868,9 +4916,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5914857384278682493, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6570009431367270541, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
       propertyPath: m_Name
       value: CardUpgradeElement
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903461844375649649, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9154694684882076251, guid: d85bbfa268604bc43aebd18c2c259237, type: 3}
       propertyPath: m_Sprite
