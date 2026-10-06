@@ -34,8 +34,14 @@ public class UpgradeManager : MonoBehaviour
     {
         CurrentChoices = allUpgrades.OrderBy(u => Random.value).Take(choicesPerLevelUp).ToList();
 
-        Debug.Log($"<color=yellow>PresentChoices çalýþtý. allUpgrades listesi kaç eleman: {allUpgrades.Count}, CurrentChoices: {CurrentChoices.Count}</color>"); // GEÇÝCÝ
-                                                                                                                                                                 // ... geri kalan log'lar ayný
+        if (CurrentChoices.Count > 0)
+        {
+            ChooseUpgrade(Random.Range(0, CurrentChoices.Count));
+        }
+        else
+        {
+            GameManager.Instance.SetState(GameState.Playing);
+        }
     }
 
     public void ChooseUpgrade(int index)
@@ -47,27 +53,6 @@ public class UpgradeManager : MonoBehaviour
 
         ApplyUpgrade(CurrentChoices[index]);
         GameManager.Instance.SetState(GameState.Playing);
-    }
-
-    private void Update()
-    {
-        // Oyun LevelUp durumunda deðilse veya klavye yoksa çýk
-        if (GameManager.Instance == null || GameManager.Instance.CurrentState != GameState.LevelUp) return;
-        if (Keyboard.current == null) return;
-
-        // YENÝ INPUT SÝSTEMÝ ile tuþlarý dinliyoruz ve DOÐRU indeksleri (0,1,2) gönderiyoruz
-        if (Keyboard.current.digit1Key.wasPressedThisFrame)
-        {
-            ChooseUpgrade(0);
-        }
-        else if (Keyboard.current.digit2Key.wasPressedThisFrame)
-        {
-            ChooseUpgrade(1);
-        }
-        else if (Keyboard.current.digit3Key.wasPressedThisFrame)
-        {
-            ChooseUpgrade(2);
-        }
     }
 
     private void ApplyUpgrade(UpgradeData upgrade)

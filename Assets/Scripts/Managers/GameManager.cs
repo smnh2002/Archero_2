@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public enum GameState
@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case GameState.Playing:
+            case GameState.LevelUp:
                 Time.timeScale = 1f;
                 break;
             default:
