@@ -956,8 +956,8 @@ MonoBehaviour:
   - {fileID: 6111155637042811231, guid: b888ab6f8d691c24da9f8ac12925f0a0, type: 3}
   - {fileID: 1041588669597499418, guid: 92ee49c696943504eb7cba32e42ae107, type: 3}
   bossPrefab: {fileID: 2966710428162718953, guid: d25dbf6c3d6f3db458eeaa5efaf9e2ca, type: 3}
-  arenaMin: {x: -15, y: -7}
-  arenaMax: {x: 30, y: 14}
+  arenaMin: {x: -9.17, y: -59.84}
+  arenaMax: {x: 76.6, y: 35.6}
   bossSpawnEffectPrefab: {fileID: 3120418554548316850, guid: 73cc0c49dc0920942ac381edc9a104d3, type: 3}
   bossEntranceDelay: 1.5
   cameraShakeDuration: 5
