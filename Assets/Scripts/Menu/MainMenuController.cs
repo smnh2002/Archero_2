@@ -5,23 +5,22 @@ using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
-    [Header("UI ��eleri")]
+    [Header("UI Ogeleri")]
     [SerializeField] private TextMeshProUGUI statsText;
     [SerializeField] private Slider volumeSlider;
 
-    [SerializeField] private string gameSceneName = "GameScene"; // YEN� - eksikti
+    [SerializeField] private string gameSceneName = "GameScene";
 
     private void Start()
     {
-        // GameManager statini g�venceye al
+        // GameManager statini guvenceye al
         if (GameManager.Instance != null)
             GameManager.Instance.SetState(GameState.MainMenu);
 
-        // �statistikleri Y�kle
+        // Istatistikleri Yukle
         if (SaveManager.Instance != null)
         {
             var data = SaveManager.Instance.SaveData;
-            // YEN�: Yaz� objesi sahnede varsa yazd�r, yoksa hata verme ge�!
             if (statsText != null)
             {
                 statsText.text = $"Highest Level: {data.highestLevelReached}\nRuns Completed: {data.completedRuns}";
@@ -32,36 +31,29 @@ public class MainMenuController : MonoBehaviour
                 volumeSlider.onValueChanged.AddListener(SetVolume);
             }
         }
+
+        // Sahnedeki tum butonlara (paneller dahil) tiklama sesini otomatik bagla
+        AudioManager.Instance?.HookAllButtons();
     }
 
     public void StartGame()
     {
-        
         AudioManager.Instance?.PlayButtonClick();
-        
-        // PlayerPersistence.Instance?.ResetForNewRun();
-
-     
         SceneManager.LoadScene(gameSceneName);
 
-        
         if (GameManager.Instance != null)
             GameManager.Instance.SetState(GameState.Playing);
-
     }
 
     public void QuitGame()
     {
         AudioManager.Instance?.PlayButtonClick();
-        Debug.Log("Oyundan ��k�ld�");
+        Debug.Log("Oyundan cikildi");
         Application.Quit();
 
-        // 2. Unity Edit�r� i�indeyken "Play" modundan ��kmam�z� sa�lar
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
-
-
     }
 
     public void SetVolume(float value)

@@ -65,7 +65,7 @@ public class BossHealth : MonoBehaviour, IDamageable
         currentHealth -= damage.amount;
         currentHealth = Mathf.Max(currentHealth, 0f);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
-        AudioManager.Instance?.PlaySFX(AudioManager.Instance.playerHitClip);
+        AudioManager.Instance?.PlaySFX(AudioManager.Instance.enemyHitClip);
 
         // Hasar yazisini goster (Floating Damage Text)
         DamagePopupManager.Create(transform.position, damage.amount);
